@@ -1,0 +1,38 @@
+dbname = "DailyExpense"
+
+User Management
+<------------------------>
+Name -> varchar(255)
+Email -> varchar(255)
+Password -> varchar(255)
+Profile -> varchar(255)
+status -> default(0)
+
+Daily Expense 
+<------------------------>
+Date -> Today
+Title -> Daily Balance
+Expense Total ->
+Income Total ->
+Remain Balance ->
+
+<Expense Lists>
+<------------------------>
+Input -> Date
+Input -> Title 
+Input -> Description
+Input -> Expense 
+Input -> Remark (Optional)
+Created_at -> Updated_at 
+Created_by -> Updated_by
+Result -> Total 
+
+<Income Lists>
+<------------------------>
+Input -> Title 
+Input -> Description
+Input -> Income 
+Input -> Remark (Optional)
+Created_at -> Updated_at 
+Created_by -> Updated_by
+Result -> Total 
