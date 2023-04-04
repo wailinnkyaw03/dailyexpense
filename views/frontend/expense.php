@@ -18,8 +18,9 @@
             Filter
           </button>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.php?page=expenselist">All Lists</a></li>
             <?php foreach($expmonths as $expmonth): ?>
-            <li><a class="dropdown-item" href="index.php?page=expenselist&month=<?= $expmonth['month'] ?>"><?= $expmonth['month']  ?></a></li>
+            <li><a class="dropdown-item" href="index.php?page=expenselist&month=<?= $expmonth['month'] ?>&year=<?= $expmonth['year'] ?>"><?= $expmonth['exp']  ?></a></li>
             <?php endforeach ?>
           </ul>
         </div>
@@ -85,11 +86,6 @@
                     <?php endforeach ?>
                 </tbody>
                 <tfoot>
-                    <?php 
-                    $id = $_SESSION['auth']['id'];
-                    $exptotal = $query->getAll("expenses", "sum(total) as exptotal", null, "created_by=$id", null);
-                    
-                    ?>
                     <tr>
                         <th colspan="5" class="text-center">Expense Total</th>
                         <?php foreach($exptotal as $exp): ?>
