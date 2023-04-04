@@ -1,8 +1,8 @@
 <?php 
 
 class DB{
-    private $host = "localhost:3308";
-    private $dbname = "dailyexpense";
+    private $host = "localhost";
+    private $dbname = "personalFinance";
     private $username = "root";
     private $password = "";
     private $connection;

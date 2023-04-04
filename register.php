@@ -1,12 +1,12 @@
 <?php 
 session_start();
-include "./views/backend/layouts/head.php";
+include "./views/frontend/layouts/head.php";
 ?>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card p-5 shadow" style="margin-top:18%">
+            <div class="card p-5 shadow" style="margin-top:10%">
                 <h4 class="mb-4"><i class="fas fa-user me-2"></i>Register Now</h4>
                 <form action="./controllers/UserController.php" method="post">
                     <div class="form-floating mb-3">
@@ -58,5 +58,5 @@ include "./views/backend/layouts/head.php";
 
 
 <?php 
-include "./views/backend/layouts/footer.php";
+include "./views/frontend/layouts/script.php";
 ?>

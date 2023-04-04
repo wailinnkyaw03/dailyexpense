@@ -20,6 +20,35 @@ class QueryBuilder{
         $stmt->execute();
         return true;
     }
+
+    //login
+    public function login($email, $password){
+        $state = $this->conn->prepare("SELECT * FROM users WHERE email=:email");
+        $state->bindParam(":email", $email);
+        $state->execute();
+        $result = $state->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    //balance 
+    public function balance($id){
+        $state = $this->conn->prepare("SELECT (SELECT sum(total) FROM incomes WHERE created_by=:id) as intotal, (SELECT sum(total) FROM expenses WHERE created_by=:id) as exptotal");
+        $state->bindParam(":id", $id);
+        $state->execute();
+        $result = $state->fetch(PDO::FETCH_ASSOC);
+        $balance = $result['intotal']-$result['exptotal'];
+        return $balance;
+    }
+
+    //getAll monthly Months
+    // public function getAllMonth($id){
+    //     $state = $this->conn->prepare("SELECT DATE_FORMAT(expdate, '%m-%Y') as expmonth FROM expenses WHERE created_by=:id");
+    //     $state->bindParam(":id", $id);
+    //     $state->execute();
+    //     $results = $state->fetchAll(PDO::FETCH_ASSOC);
+    //     return $results;
+    // }
+
     //getAllJoin
     public function getAll($table, $cols, $join, $where, $order){
         $sql = "SELECT $cols FROM $table";
@@ -79,6 +108,8 @@ class QueryBuilder{
         $stmt->execute();
         return true;
     }
+
+
 }
 
 ?>
