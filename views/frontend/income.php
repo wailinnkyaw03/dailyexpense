@@ -1,6 +1,19 @@
 <div class="container my-5">
     <div class="row">
         <h3 class="mb-4">Income Lists <button class="btn btn-sm btn-primary float-end" data-bs-target="#incomeModal" data-bs-toggle="modal">Add</button></h3>
+        
+        <div class="dropdown mb-4">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Filter
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.php?page=incomelist">All Lists</a></li>
+            <?php foreach($inmonths as $inmonth): ?>
+            <li><a class="dropdown-item" href="index.php?page=incomelist&month=<?= $inmonth['month'] ?>&year=<?= $inmonth['year'] ?>"><?= $inmonth['income']  ?></a></li>
+            <?php endforeach ?>
+          </ul>
+        </div>
+
         <?php if(isset($_SESSION['expire'])){
                 $diff = time() - $_SESSION['expire'];
                 if($diff > 2){
@@ -62,11 +75,6 @@
                     <?php endforeach ?>
                 </tbody>
                 <tfoot>
-                    <?php 
-                    $id = $_SESSION['auth']['id'];
-                    $intotal = $query->getAll("incomes", "sum(total) as intotal", null, "created_by=$id", null);
-                    
-                    ?>
                     <tr>
                         <th colspan="5" class="text-center">Income Total</th>
                         <?php foreach($intotal as $in): ?>
